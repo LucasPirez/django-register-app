@@ -1,0 +1,59 @@
+{% extends "gymapp/layout.html" %} {% load static %}
+<!--  -->
+{% block body %}
+<div class="cont-index">
+  <!-- <div>
+    <img
+      src="{% static 'img/gym1.jpg' %}"
+      alt="gym-picture"
+      class="img-index"
+    />
+  </div> -->
+  <div class="separador">
+    <div>
+      <h2 class="enjoy">Enjoy your Gym</h2>
+    </div>
+
+    <div class="child1">
+      <h3 class="h3-child1">visit our social networks</h3>
+
+     <a href="#" class="inst">Instagram
+     <a href="#" class="face">Facebook</a>
+
+    </div>
+  </div>
+  <!-- <img
+      src="{% static 'img/fondo.png' %} "
+      alt="image-gym"
+      class="img-index"
+    />  -->
+
+  <div class="arrow_container">
+    {% if user == True %}
+    <div>
+      <h4 class="h4-arrow">Sign up for your class</h4>
+    </div>
+    <div>
+      <a href="{% url 'reserv' %} " class="arrow-wrap">
+        <span class="arrow"></span
+      ></a>
+    </div>
+
+    {% else %}
+
+    <h4 class="reservar">Log in to enroll or unsubscribe from a class</h4>
+
+    {% endif %}
+  </div>
+  <div class="rot-op">
+    
+    <p class="p-op" >It is recommended to rotate the phone for better viewing</p>
+  </div>
+  <div class="media-child">
+    <h3 class="media-h3">visit our social networks</h3>
+
+    <span class="media-inst">Instagram</span>
+    <span class="media-face">Facebook</span>
+  </div>
+</div>
+{% endblock%}

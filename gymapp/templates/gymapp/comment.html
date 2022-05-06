@@ -1,0 +1,38 @@
+{% extends "gymapp/layout.html" %} {% load static %}
+<!--  -->
+{% block body %}
+<div class="container-lg cont-comment">
+  {% if user.is_superuser %}
+  <div class="container-admin">
+    <h3>comentarios</h3>
+
+    {% for com in comments%}
+    <div class="card">
+      <div class="card-header">
+        <h4>{{ com.authorComment}}</h4>
+        <span>{{ com.authorComment.email}}</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Motive : {{ com.motive}}</p>
+        <hr />
+        <p class="card-text">{{ com.newComment}}</p>
+        <p>{{ com.timeComment }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+
+  <form method="post" class="coment-form">
+    {% csrf_token %} {{form}}
+
+    <input type="submit" value="send comment" class="btn btn-primary" />
+    {% if value == 'yes' %}
+
+    <a class="navbar-brand" href="{% url 'index' %}">Return</a>
+    {% endif %}
+  </form>
+
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "gymapp/layout.html" %} {% block body %}
+<!--  -->
+<div class="con">
+  <div class="all_class">
+    <ul>
+      <li>
+        <h2>Class Today</h2>
+        <ul>
+          {% for e in enrolled %}
+          <!--  -->
+          {% if day in e.asignacion.all %}
+          <li>
+            <p>{{ e.nameClass}} <span>{{e.classHour }}</span></p>
+          </li>
+          {% endif %} {% endfor %}
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <hr />
+  <h2>All Class</h2>
+  <div class="enrolled_container">
+    {% for enr in enrolled %}
+    <div class="enrolled">
+      <ol>
+        <h4>{{enr.nameClass}} <span> {{enr.classHour}}</span></h4>
+
+        <h5>Teacher: {{enr.profer}}</h5>
+        <ul>
+          {% for s in enr.student.all %}
+          <div>
+            <li>{{s}}</li>
+          </div>
+          {% endfor %}
+        </ul>
+      </ol>
+    </div>
+    {% endfor %}
+  </div>
+  <!--  -->
+</div>
+{% endblock %}

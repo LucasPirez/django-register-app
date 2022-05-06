@@ -1,0 +1,44 @@
+{% extends "gymapp/layout.html" %} {% load static %}
+<!--  -->
+{% block body %}
+
+<div class="container-index">
+  <h1 class="usern">
+    Hello: <strong id="username">{{ user.username }}</strong>
+  </h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Hour</th>
+        <th scope="col">Monday</th>
+        <th scope="col">Tuesday</th>
+        <th scope="col">Wenesday</th>
+        <th scope="col">Trusday</th>
+        <th scope="col">Friday</th>
+      </tr>
+    </thead>
+
+    <tbody id="container"></tbody>
+  </table>
+  <div class="colors">
+    <div class="color"><span>reserved</span></div>
+    <div class="color2"><span>Complete</span></div>
+  </div>
+  <div id="container_select">
+    <select id="select" class="form-select" aria-label="Default select example">
+      <option selected>select</option>
+    </select>
+
+    <div id="container_button"></div>
+    <div id="p-aviso">
+      <p>
+        <strong>you can only register for two classes at the same time</strong>
+      </p>
+    </div>
+  </div>
+
+  {% block script %}
+  <script src="{%  static 'gym/inbox.js' %}"></script>
+</div>
+{% endblock %} {% endblock %}

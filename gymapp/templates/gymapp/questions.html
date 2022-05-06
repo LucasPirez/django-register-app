@@ -1,0 +1,88 @@
+{% extends "gymapp/layout.html" %} {% load static %}
+<!--  -->
+{% block body %}
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+
+<div id="container" class="container-lg">
+  <div id="cont-questions">
+    {% for obj in questions %}
+    <div class="card">
+      <div class="card-body">
+        <h4 class="h" class="card-title" id="e{{ obj.id }}">
+          {{obj.quest}}<input type="hidden" value="a{{ obj.id }}" />
+        </h4>
+        <p id="a{{ obj.id }}" class="p">{{obj.answer}}</p>
+      </div>
+    </div>
+    {% if user.is_superuser %}
+    <div class="container_buttons">
+      <button
+        id=" relleno-{{obj.id}}"
+        class="modified btn btn-secondary"
+        value="{{obj.id}}"
+      >
+        modified
+      </button>
+      <button
+        type="button"
+        class="modified2 btn btn-danger"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        value="{{obj.id}}"
+      >
+        Delete
+      </button>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+
+  {% if user.is_superuser %}
+  <h4 class="modified-questions">Create or Modified</h4>
+  <form class="form-questions">
+    <input type="text" id="input-quest" />
+    <textarea
+      id="texterea-questions"
+      cols="60"
+      rows="5"
+      maxlength="250"
+    ></textarea>
+    <input type="hidden" id="hidd" />
+  </form>
+  <button id="but-questions">Send</button>
+
+  {% endif%}
+</div>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete questions</h5>
+      </div>
+      <div class="modal-body"><p>are you sure you want to delete?</p></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          id="modal-delete"
+          data-bs-dismiss="modal"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% block script %}
+<script src="{%  static 'gym/questions.js' %}"></script>
+{% endblock %} {% endblock %}
